@@ -1,10 +1,11 @@
-# Django sample for Render Workflows
-> A Django template to demonstrate the use of Render Workflows inside of Django
+# Django sample for Render
+> A Django template for Render
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
-This is a sample Django project that demonstrates the use of Render Workflows inside of the Django context. In particular it seeks to demonstrate:
+This is a sample Django project that demonstrates the use of Render technologies inside of the Django context. In particular it seeks to demonstrate:
 
+- Settings for development and deployment into Render
 - Workflow Tasks accessing the Django ORM
 - A Django management command that can trigger the worker
 - A way of sharing the workflow context across packages (so you can define tasks in separate apps or files)
