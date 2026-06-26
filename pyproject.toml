@@ -1,0 +1,14 @@
+[project]
+name = "render-workflows-django-example"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "dj-database-url>=3.1.2",
+    "django>=6.0.6",
+    "django-tailwind[cookiecutter,honcho,reload]>=4.5.0",
+    "psycopg2-binary>=2.9.12",
+    "render-sdk>=0.7.0",
+    "whitenoise>=6.12.0",
+]

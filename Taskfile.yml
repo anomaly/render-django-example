@@ -1,0 +1,91 @@
+version: "3"
+
+dotenv: [".env"]
+
+tasks:
+  publish:tag:
+    prompt: "Before we push, is the version number up to date?"
+    desc: tag a release and push to origin
+    summary: |
+      This will tag a release and push it to origin, it will also push
+      the tag to the remote origin.
+    cmds:
+      - |
+        git tag -s -a v{{.PROJ_VER}} -m "chore: release v{{.PROJ_VER}}"
+      - git push origin v{{.PROJ_VER}}
+    vars:
+      PROJ_VER:
+        sh: "task version"
+  db:rev:
+    desc: run a django make migration command
+    cmds:
+      - cd src && uv run python manage.py makemigrations
+  db:migrate:
+    desc: run a django run migration command
+    cmds:
+      - cd src && uv run python manage.py migrate
+  dev:test:
+    desc: runs tests inside the server container
+    summary: |
+      Uses pytest to run a set of extensive test suites for the project
+    cmds:
+      - cd src && uv run python manage.py test
+  dev:playwright:
+    desc: runs playwright tests inside the server container
+    summary: |
+      Uses playwright to run a set of extensive test suites for the project
+    cmds:
+      - docker compose exec {{.PROJ_NAME}} sh -c "poetry run pytest tests/playwright"
+  dev:pyshell:
+    desc: get a python session with django paths on the api container
+    cmds:
+      - cd src && uv run python manage.py shell
+  dev:manage:
+    desc: run a django management command
+    cmds:
+      - cd src && uv run python manage.py {{.CLI_ARGS}}
+  dev:run:
+    desc: run the django development server
+    cmds:
+      - cd src && uv run python manage.py tailwind dev
+    deps:
+      - db:migrate
+  dev:tailwind:
+    desc: run and watch tailwind css build
+    cmds:
+      - cd src && uv run python manage.py tailwind start
+  dev:sfdesigner:
+    desc: run the storefront designer vite dev server
+    cmds:
+      - cd src/storefront-designer && npm run dev
+  dev:docs:
+    desc: run the mkdocs server with appropriate flags
+    cmds:
+      - cd docs && poetry run mkdocs serve --open -a localhost:8002
+  dev:sproxy:
+    desc: runs stripe proxy using stripe-cli
+    cmds:
+      - stripe listen --forward-to localhost:8000/webhooks/stripe/
+  dev:ngrok:
+    desc: run ngrok to proxy stripe requests
+    cmds:
+      - ngrok http --url anomaly.ngrok.app 8000
+  dev:psql:
+    desc: postgres shell on the db container
+    cmds:
+      - |
+        docker compose exec db sh -c \
+        "psql -U {{.POSTGRES_USER}} -d {{.POSTGRES_DB}}"
+  dev:sh:
+    desc: get a bash session on the api container
+    cmds:
+      - docker compose exec {{.PROJ_NAME}} sh -c "bash"
+  dev:render-worker:
+    desc: run the render worker
+    cmds:
+      - cd src; render workflows dev --debug -- uv run python manage.py render_workflow_worker
+  version:
+    desc: get the version number from python project
+    cmds:
+      - |
+        python -c "from {{.PROJ_NAME}} import __version__; print(__version__)"
