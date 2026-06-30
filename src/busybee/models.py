@@ -15,3 +15,7 @@ class User(AbstractUser):
     """
 
     pass
+
+
+class Log(models.Model):
+    pass
