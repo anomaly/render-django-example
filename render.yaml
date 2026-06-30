@@ -6,14 +6,16 @@ envVarGroups:
       - key: LOGFIRE_API_KEY
         sync: false
       - key: DJANGO_SETTINGS_MODULE
-        value: alonnah.settings.render
+        value: rango.settings.render
       - key: LOGIRE_ENV
         value: render
       - key: SECRET_KEY
         generateValue: true
+      - key: DEPLOYMENT_DOMAIN
+        sync: false
 
 projects:
-  - name: Alonnah-V2
+  - name: DjangoSample
     environments:
       # Staging environment in the project
       - name: Staging

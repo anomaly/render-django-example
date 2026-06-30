@@ -12,6 +12,9 @@ from .base import *
 
 DEBUG = False
 
+# From Render environment variables
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
 ALLOWED_HOSTS = [
     os.environ.get("RENDER_EXTERNAL_HOSTNAME"),
 ]

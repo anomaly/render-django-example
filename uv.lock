@@ -1108,6 +1108,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "django-browser-reload" },
     { name = "zensical" },
 ]
 
@@ -1128,7 +1129,10 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "zensical", specifier = ">=0.0.46" }]
+dev = [
+    { name = "django-browser-reload", specifier = ">=1.21.0" },
+    { name = "zensical", specifier = ">=0.0.46" },
+]
 
 [[package]]
 name = "requests"

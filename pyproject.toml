@@ -21,5 +21,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "django-browser-reload>=1.21.0",
     "zensical>=0.0.46",
 ]
