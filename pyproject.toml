@@ -12,6 +12,7 @@ dependencies = [
     "django-anymail>=15.0",
     "django-htmx>=1.27.0",
     "django-tailwind[cookiecutter,honcho,reload]>=4.5.0",
+    "gunicorn>=26.0.0",
     "psycopg2-binary>=2.9.12",
     "psycopg[binary,pool]>=3.3.4",
     "render-sdk>=0.7.0",
