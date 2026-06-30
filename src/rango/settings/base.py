@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "tailwind",
+    "tuxedo",
+    "rango",
+    "busybee",
 ]
 
 MIDDLEWARE = [
@@ -109,6 +113,11 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
+
+# Abstract user
+AUTH_USER_MODEL = "busybee.User"
+
+TAILWIND_APP_NAME = "tuxedo"
 
 
 # Static files (CSS, JavaScript, Images)
