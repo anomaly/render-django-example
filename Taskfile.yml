@@ -59,9 +59,9 @@ tasks:
     cmds:
       - cd src/storefront-designer && npm run dev
   dev:docs:
-    desc: run the mkdocs server with appropriate flags
+    desc: run the zensical server with appropriate flags
     cmds:
-      - cd docs && poetry run mkdocs serve --open -a localhost:8002
+      - uv run zensical serve -o -a localhost:8002
   dev:sproxy:
     desc: runs stripe proxy using stripe-cli
     cmds:
