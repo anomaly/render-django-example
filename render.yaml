@@ -23,8 +23,8 @@ projects:
           - name: django-render-demo-db
             region: singapore
             plan: basic-256mb
-            databaseName: alonnah
-            user: alonnah
+            databaseName: rango
+            user: rango
         services:
           - type: web
             plan: standard
@@ -32,7 +32,7 @@ projects:
             runtime: python
             region: singapore
             buildCommand: "./bin/build.sh"
-            startCommand: "cd src && uv run gunicorn alonnah.asgi:application -k uvicorn.workers.UvicornWorker"
+            startCommand: "cd src && uv run gunicorn rango.asgi:application -k uvicorn.workers.UvicornWorker"
             envVars:
               - fromGroup: django-render-demo
               - key: PYTHON_VERSION
