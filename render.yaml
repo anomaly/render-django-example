@@ -1,0 +1,43 @@
+envVarGroups:
+  - name: django-render-demo
+    envVars:
+      - key: RESEND_API_KEY
+        sync: false
+      - key: LOGFIRE_API_KEY
+        sync: false
+      - key: DJANGO_SETTINGS_MODULE
+        value: alonnah.settings.render
+      - key: LOGIRE_ENV
+        value: render
+      - key: SECRET_KEY
+        generateValue: true
+
+projects:
+  - name: Alonnah-V2
+    environments:
+      # Staging environment in the project
+      - name: Staging
+        databases:
+          - name: django-render-demo-db
+            region: singapore
+            plan: basic-256mb
+            databaseName: alonnah
+            user: alonnah
+        services:
+          - type: web
+            plan: standard
+            name: django-render-demo-web
+            runtime: python
+            region: singapore
+            buildCommand: "./bin/build.sh"
+            startCommand: "cd src && uv run gunicorn alonnah.asgi:application -k uvicorn.workers.UvicornWorker"
+            envVars:
+              - fromGroup: django-render-demo
+              - key: PYTHON_VERSION
+                value: 3.13.13
+              - key: DATABASE_URL
+                fromDatabase:
+                  name: django-render-demo-db
+                  property: connectionString
+              - key: WEB_CONCURRENCY
+                value: 4
