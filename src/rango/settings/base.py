@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -124,3 +125,7 @@ TAILWIND_APP_NAME = "tuxedo"
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+# Destination for `collectstatic` (required in production, e.g. Render).
+# Must live outside STATICFILES_DIRS so collected files aren't re-collected.
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
