@@ -23,29 +23,40 @@ We also include:
 
 ## Setup for development
 
-Before you start you must have0
-
-- Direnv
-Direnv automatically loads and unloads environment variables depending on your curent directory. This is used when we have an envrc file in your project. Created per project isolated dev env. 
+`direnv` automatically loads and unloads environment variables from your `.envrc` file on your current directory. Install this via `brew`:
 
 ```bash
 brew install direnv
 ```
 
-- uv
-Uv library supports managing Python projects which installs and resolves dependencies faster than pip and replaces multiple tools(like pip, venv etc)
+Use this template for a `.envrc` file and adjust the values as needed.
+
+```envrc
+export DJANGO_SETTINGS_MODULE=rango.settings.dev
+export POSTGRES_DB=django
+export POSTGRES_HOST=localhost
+export POSTGRES_USER=postgres
+export POSTGRES_PASSWORD=postgres
+export POSTGRES_PORT=5432
+```
+
+Each time you modify `.envrc`, run `direnv allow` to reload the environment variables.
+
+We use `uv` to manage Python dependencies. Install it and sync the dependencies:
 
 ```bash
 brew install uv
+uv sync
 ```
 
-- Taskfile
-Open source task runner and builder tool.Use for better cross platform build and ideal code generation. Utilizes YAML syntax to define tasks. 
+`Taskfile` is a cross-platform task runner and builder tool. Install it via `brew` and use it to run tasks defined in `Taskfile.yaml`.
 
 ```bash
 brew install go-task/tap/go-task
 brew install go-task
+task # will show you the available tasks
 ```
+
 
 - Postgres (GRANT PRIVILEGES)
 GRANT is used to define access privileges on the database object lie the table, foreign table, column , view. schema etc. 
@@ -54,20 +65,8 @@ GRANT is used to define access privileges on the database object lie the table, 
 grant ALL on database MY_DB to group MY_GROUP;
 ```
 
-```
-export DJANGO_SETTINGS_MODULE=rango.settings.dev
-export POSTGRES_DB=django
-export POSTGRES_HOST=localhost
-export POSTGRES_USER=postgres
-export POSTGRES_PASSWORD=password123
-export POSTGRES_PORT=5432
-```                        
+                        
 
-- .envrc
-A configuration file used by direnv to perform automatic loading and unlaoding of env variables like API Keys. 
-```bash
-vim .envrc
-```
 
 - Render
 
