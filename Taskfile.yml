@@ -54,10 +54,6 @@ tasks:
     desc: run and watch tailwind css build
     cmds:
       - cd src && uv run python manage.py tailwind start
-  dev:sfdesigner:
-    desc: run the storefront designer vite dev server
-    cmds:
-      - cd src/storefront-designer && npm run dev
   dev:docs:
     desc: run the zensical server with appropriate flags
     cmds:
@@ -84,6 +80,10 @@ tasks:
     desc: run the render worker
     cmds:
       - cd src; render workflows dev --debug -- uv run python manage.py render_workflow_worker
+  dev:render-console:
+    desc: run the render console
+    cmds:
+      - render workflows tasks list --local
   version:
     desc: get the version number from python project
     cmds:
