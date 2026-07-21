@@ -23,10 +23,63 @@ We also include:
 
 ## Setup for development
 
+Before you start you must have0
+
+- Direnv
+Direnv automatically loads and unloads environment variables depending on your curent directory. This is used when we have an envrc file in your project. Created per project isolated dev env. 
+
+```bash
+brew install direnv
+```
+
+- uv
+Uv library supports managing Python projects which installs and resolves dependencies faster than pip and replaces multiple tools(like pip, venv etc)
+
+```bash
+brew install uv
+```
+
+- Taskfile
+Open source task runner and builder tool.Use for better cross platform build and ideal code generation. Utilizes YAML syntax to define tasks. 
+
+```bash
+brew install go-task/tap/go-task
+brew install go-task
+```
+
+- Postgres (GRANT PRIVILEGES)
+GRANT is used to define access privileges on the database object lie the table, foreign table, column , view. schema etc. 
+
+```bash
+grant ALL on database MY_DB to group MY_GROUP;
+```
+
+```
+export DJANGO_SETTINGS_MODULE=rango.settings.dev
+export POSTGRES_DB=django
+export POSTGRES_HOST=localhost
+export POSTGRES_USER=postgres
+export POSTGRES_PASSWORD=password123
+export POSTGRES_PORT=5432
+```                        
+
+- .envrc
+A configuration file used by direnv to perform automatic loading and unlaoding of env variables like API Keys. 
+```bash
+vim .envrc
+```
+
+- Render
+
+```bash
+brew update
+brew install render
+```
+
+
+
 
 ## On Render.com
-
-
 
 
 ## Resources
