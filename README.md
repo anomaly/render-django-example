@@ -57,21 +57,18 @@ brew install go-task
 task # will show you the available tasks
 ```
 
+Make sure you create a databae for your project and `GRANT` the necessary privileges to the `postgres` user.
 
-- Postgres (GRANT PRIVILEGES)
-GRANT is used to define access privileges on the database object lie the table, foreign table, column , view. schema etc. 
-
-```bash
-grant ALL on database MY_DB to group MY_GROUP;
+```psql
+CREATE DATABASE django;
+GRANT ALL PRIVILEGES ON DATABASE django TO postgres;
 ```
 
-                        
+### Render Workflows
 
-
-- Render
+You will require the Render CLI to assist with your developing Render Workflows, install it with the handy `brew` command below.
 
 ```bash
-brew update
 brew install render
 ```
 
