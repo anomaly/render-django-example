@@ -72,8 +72,12 @@ You will require the Render CLI to assist with your developing Render Workflows,
 brew install render
 ```
 
+## Django project structure
 
+For giggles I called the Django app `rango` (Render and Django, also [a western comedy film](https://en.wikipedia.org/wiki/Rango_(2011_film)))
 
+- `rango/` - the Django app
+- `busybee` - the app where I have the workflow implemented
 
 ## On Render.com
 

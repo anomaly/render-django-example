@@ -79,7 +79,7 @@ tasks:
   dev:render-worker:
     desc: run the render worker
     cmds:
-      - cd src; render workflows dev --debug -- uv run python manage.py render_workflow_worker
+      - cd src; render workflows dev --debug -- uv run python manage.py render_workflows_worker
   dev:render-console:
     desc: run the render console
     cmds:
