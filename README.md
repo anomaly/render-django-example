@@ -23,10 +23,62 @@ We also include:
 
 ## Setup for development
 
+`direnv` automatically loads and unloads environment variables from your `.envrc` file on your current directory. Install this via `brew`:
+
+```bash
+brew install direnv
+```
+
+Use this template for a `.envrc` file and adjust the values as needed.
+
+```envrc
+export DJANGO_SETTINGS_MODULE=rango.settings.dev
+export POSTGRES_DB=django
+export POSTGRES_HOST=localhost
+export POSTGRES_USER=postgres
+export POSTGRES_PASSWORD=postgres
+export POSTGRES_PORT=5432
+```
+
+Each time you modify `.envrc`, run `direnv allow` to reload the environment variables.
+
+We use `uv` to manage Python dependencies. Install it and sync the dependencies:
+
+```bash
+brew install uv
+uv sync
+```
+
+`Taskfile` is a cross-platform task runner and builder tool. Install it via `brew` and use it to run tasks defined in `Taskfile.yaml`.
+
+```bash
+brew install go-task/tap/go-task
+brew install go-task
+task # will show you the available tasks
+```
+
+
+- Postgres (GRANT PRIVILEGES)
+GRANT is used to define access privileges on the database object lie the table, foreign table, column , view. schema etc. 
+
+```bash
+grant ALL on database MY_DB to group MY_GROUP;
+```
+
+                        
+
+
+- Render
+
+```bash
+brew update
+brew install render
+```
+
+
+
 
 ## On Render.com
-
-
 
 
 ## Resources
