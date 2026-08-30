@@ -2,7 +2,6 @@ import math
 import random
 from datetime import datetime, timedelta, timezone
 
-import logfire
 from asgiref.sync import sync_to_async
 from render_sdk import Workflows
 
